@@ -1,0 +1,20 @@
+#
+# Cookbook:: postgresql
+# Recipe:: default
+#
+# Copyright:: 2018, The Authors, All Rights Reserved.
+
+package 'postgresql-server' do
+        notifies : run, 'execute[postgresql-init]'
+end
+
+ececute 'postgresql-init'
+         command 'postgresql-steup initdb'
+          action :nothing 
+
+end
+
+service 'postgresql' do
+         acthion [:enable, :start]
+end
+
